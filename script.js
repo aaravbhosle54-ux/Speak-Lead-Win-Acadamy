@@ -63,6 +63,70 @@ const topicsData = {
     ]
 };
 
+// Impromptu Questions for spontaneous speaking
+const impromptuQuestionsData = {
+    elementary: [
+        'If you could have any superpower, what would it be and why?',
+        'What is your favorite place in the world and why do you love it?',
+        'If you could be any animal, which would you choose and why?',
+        'What makes a good friend?',
+        'If you could travel anywhere, where would you go?',
+        'What is your favorite subject and why?',
+        'If you could have lunch with anyone, who would it be?',
+        'What does it mean to be brave?',
+        'If you could invent something new, what would it be?',
+        'What is something you are proud of?'
+    ],
+    middle: [
+        'What does success mean to you?',
+        'How do you handle failure or disappointment?',
+        'What is the most important quality in a friend?',
+        'How has technology changed your life?',
+        'What is your biggest challenge and how do you overcome it?',
+        'If you could change one thing about school, what would it be?',
+        'What does it mean to be a good teammate?',
+        'How do you stay motivated to achieve your goals?',
+        'What is something you want to learn in the next year?',
+        'How do you deal with peer pressure?'
+    ],
+    high: [
+        'What does leadership mean to you?',
+        'How do you balance school, work, and personal interests?',
+        'What is your greatest strength and how do you use it?',
+        'What challenges do you think young people face today?',
+        'How do you define success in your own life?',
+        'What values are most important to you and why?',
+        'How do you handle disagreements with others?',
+        'What is your dream career and why?',
+        'How do you contribute to your community?',
+        'What does it mean to have integrity?'
+    ],
+    college: [
+        'What is the most significant lesson you have learned so far?',
+        'How do you see yourself making a difference in the world?',
+        'What is your biggest professional goal and how will you achieve it?',
+        'How do you maintain work-life balance?',
+        'What does ethical leadership look like to you?',
+        'How do you handle failure or setbacks?',
+        'What is the most important skill you have developed?',
+        'How do you approach challenges in your career?',
+        'What motivates you to excel?',
+        'How do you build meaningful relationships in your professional life?'
+    ],
+    professional: [
+        'What is your vision for the future of your industry?',
+        'How do you foster innovation in your organization?',
+        'What is the most valuable lesson you have learned in your career?',
+        'How do you lead your team through change?',
+        'What does corporate social responsibility mean to you?',
+        'How do you maintain strategic focus amid competing priorities?',
+        'What is your approach to decision-making?',
+        'How do you develop your team members?',
+        'What is the key to building a successful organization?',
+        'How do you navigate disruption in your market?'
+    ]
+};
+
 const speechOutlines = {
     persuasive: {
         structure: [
@@ -447,7 +511,7 @@ function showLoading(elementId) {
     document.getElementById(elementId).innerHTML = '<div class="output-content"><div class="loading"></div> Generating...</div>';
 }
 
-// ========== TOPIC GENERATOR ==========
+// ========== TOPIC/IMPROMPTU QUESTIONS GENERATOR ==========
 
 function generateTopics() {
     const ageGroup = document.getElementById('ageGroup').value;
@@ -487,6 +551,85 @@ function copyTopicsToClipboard() {
         alert('Topics copied to clipboard!');
     }).catch(() => {
         alert('Failed to copy topics');
+    });
+}
+
+// ========== IMPROMPTU QUESTIONS GENERATOR ==========
+
+function generateImmpromtuQuestions() {
+    const ageGroup = document.getElementById('ageGroup').value;
+    const output = document.getElementById('topicsOutput');
+
+    if (!ageGroup) {
+        output.innerHTML = '<div class="info-message">Please select an age group first!</div>';
+        return;
+    }
+
+    showLoading('topicsOutput');
+
+    setTimeout(() => {
+        const questions = impromptuQuestionsData[ageGroup];
+        let html = '<div class="success-message">✓ Impromptu questions generated successfully!</div>';
+        html += '<div class="output-structure">';
+
+        questions.forEach((question, index) => {
+            html += `<div class="output-item">
+                <div class="output-item-title">${index + 1}. ${question}</div>
+            </div>`;
+        });
+
+        html += '</div>';
+        html += '<button class="btn-copy" onclick="copyImpromtuQuestionsToClipboard()">📋 Copy All Questions</button>';
+        html += '<button class="btn btn-primary" style="margin-left: 0.5rem;" onclick="getRandomImpromptuQuestion()">🎲 Get Random Question</button>';
+
+        output.innerHTML = html;
+    }, 500);
+}
+
+function copyImpromtuQuestionsToClipboard() {
+    const ageGroup = document.getElementById('ageGroup').value;
+    const questions = impromptuQuestionsData[ageGroup];
+    const text = questions.join('\n');
+    
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Questions copied to clipboard!');
+    }).catch(() => {
+        alert('Failed to copy questions');
+    });
+}
+
+function getRandomImpromptuQuestion() {
+    const ageGroup = document.getElementById('ageGroup').value;
+    
+    if (!ageGroup) {
+        alert('Please select an age group first!');
+        return;
+    }
+
+    const questions = impromptuQuestionsData[ageGroup];
+    const randomQuestion = getRandomItem(questions);
+    const output = document.getElementById('topicsOutput');
+    
+    let html = '<div class="success-message">✓ Random impromptu question generated!</div>';
+    html += `<div style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 2rem; border-radius: 10px; text-align: center; margin-bottom: 1rem;">
+        <div style="font-size: 1.3rem; font-weight: 600; line-height: 1.8;">"${randomQuestion}"</div>
+    </div>`;
+    html += '<button class="btn-copy" onclick="copyRandomQuestionToClipboard()">📋 Copy Question</button>';
+    html += '<button class="btn btn-primary" style="margin-left: 0.5rem;" onclick="getRandomImpromptuQuestion()">🎲 Get Another</button>';
+    html += '<button class="btn btn-secondary" style="margin-left: 0.5rem;" onclick="generateImmpromtuQuestions()">📋 View All</button>';
+
+    output.innerHTML = html;
+}
+
+function copyRandomQuestionToClipboard() {
+    const ageGroup = document.getElementById('ageGroup').value;
+    const questions = impromptuQuestionsData[ageGroup];
+    const randomQuestion = getRandomItem(questions);
+    
+    navigator.clipboard.writeText(randomQuestion).then(() => {
+        alert('Question copied to clipboard!');
+    }).catch(() => {
+        alert('Failed to copy question');
     });
 }
 
