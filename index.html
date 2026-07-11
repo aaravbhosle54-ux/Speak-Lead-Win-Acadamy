@@ -16,7 +16,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#topics" class="nav-link">Topic Generator</a></li>
+                <li><a href="#topics" class="nav-link">Impromptu Questions</a></li>
                 <li><a href="#outline" class="nav-link">Outline</a></li>
                 <li><a href="#quotes" class="nav-link">Quotes</a></li>
                 <li><a href="#jokes" class="nav-link">Jokes</a></li>
@@ -33,7 +33,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Master Your Public Speaking</h1>
-            <p>Generate speech topics, outlines, quotes, and jokes instantly</p>
+            <p>Generate impromptu questions, speech outlines, quotes, and jokes instantly</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="scrollToSection('topics')">Get Started</button>
                 <button class="btn btn-secondary" onclick="scrollToSection('outline')">Learn More</button>
@@ -45,9 +45,9 @@
     <section class="features-overview">
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">💡</div>
-                <h3>Topic Generator</h3>
-                <p>Get relevant speech topics tailored to your age group</p>
+                <div class="feature-icon">❓</div>
+                <h3>Impromptu Questions</h3>
+                <p>Get spontaneous speaking questions tailored to your age group</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📝</div>
@@ -67,11 +67,11 @@
         </div>
     </section>
 
-    <!-- Topic Generator Section -->
+    <!-- Impromptu Questions Section -->
     <section id="topics" class="section-container">
         <div class="section-header">
-            <h2>Impromptu Topic Generator</h2>
-            <p>Get speech topics suited to your age group</p>
+            <h2>Impromptu Questions Generator</h2>
+            <p>Generate spontaneous speaking questions suited to your age group</p>
         </div>
 
         <div class="content-wrapper">
@@ -87,7 +87,8 @@
                         <option value="professional">Professional/Adult (30+)</option>
                     </select>
                 </div>
-                <button class="btn btn-primary btn-block" onclick="generateTopics()">Generate Topics</button>
+                <button class="btn btn-primary btn-block" onclick="generateImmpromtuQuestions()">Generate Questions</button>
+                <button class="btn btn-secondary btn-block" style="margin-top: 0.5rem;" onclick="getRandomImpromptuQuestion()">🎲 Get Random Question</button>
             </div>
 
             <div class="output-panel">
