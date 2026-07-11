@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeechMaster - Master Your Public Speaking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎤</span>
+                <span class="logo-text">SpeechMaster</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#topics" class="nav-link">Topic Generator</a></li>
+                <li><a href="#outline" class="nav-link">Outline</a></li>
+                <li><a href="#quotes" class="nav-link">Quotes</a></li>
+                <li><a href="#jokes" class="nav-link">Jokes</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Master Your Public Speaking</h1>
+            <p>Generate speech topics, outlines, quotes, and jokes instantly</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('topics')">Get Started</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('outline')">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section class="features-overview">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Topic Generator</h3>
+                <p>Get relevant speech topics tailored to your age group</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Speech Outline</h3>
+                <p>Structured outlines for any speech type</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Inspirational Quotes</h3>
+                <p>Perfect quotes to enhance your speech</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">😄</div>
+                <h3>Jokes & Humor</h3>
+                <p>Clean, family-friendly jokes for engagement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Generator Section -->
+    <section id="topics" class="section-container">
+        <div class="section-header">
+            <h2>Impromptu Topic Generator</h2>
+            <p>Get speech topics suited to your age group</p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="input-panel">
+                <div class="form-group">
+                    <label for="ageGroup">Select Your Age Group:</label>
+                    <select id="ageGroup" class="form-control">
+                        <option value="">-- Choose Age Group --</option>
+                        <option value="elementary">Elementary School (K-5)</option>
+                        <option value="middle">Middle School (6-8)</option>
+                        <option value="high">High School (9-12)</option>
+                        <option value="college">College/University</option>
+                        <option value="professional">Professional/Adult (30+)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="generateTopics()">Generate Topics</button>
+            </div>
+
+            <div class="output-panel">
+                <div id="topicsOutput" class="output-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speech Outline Generator Section -->
+    <section id="outline" class="section-container">
+        <div class="section-header">
+            <h2>Speech Outline Generator</h2>
+            <p>Create structured outlines for your speech</p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="input-panel">
+                <div class="form-group">
+                    <label for="speechTitle">Speech Title:</label>
+                    <input type="text" id="speechTitle" class="form-control" placeholder="Enter your speech title">
+                </div>
+
+                <div class="form-group">
+                    <label for="speechType">Speech Type:</label>
+                    <select id="speechType" class="form-control">
+                        <option value="">-- Select Speech Type --</option>
+                        <option value="persuasive">Persuasive Speech</option>
+                        <option value="informative">Informative Speech</option>
+                        <option value="storytelling">Storytelling Speech</option>
+                        <option value="motivational">Motivational Speech</option>
+                        <option value="impromptu">Impromptu/Toastmasters Style</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary btn-block" onclick="generateOutline()">Generate Outline</button>
+            </div>
+
+            <div class="output-panel">
+                <div id="outlineOutput" class="output-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Generator Section -->
+    <section id="quotes" class="section-container">
+        <div class="section-header">
+            <h2>Quote Generator</h2>
+            <p>Find inspirational quotes for your speech</p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="input-panel">
+                <div class="form-group">
+                    <label for="quoteTopic">Select Topic:</label>
+                    <select id="quoteTopic" class="form-control">
+                        <option value="">-- Choose Topic --</option>
+                        <option value="public-speaking">Public Speaking</option>
+                        <option value="leadership">Leadership</option>
+                        <option value="integrity">Integrity</option>
+                        <option value="global-citizenship">Global Citizenship</option>
+                        <option value="positivity">Positivity</option>
+                        <option value="energy">Energy & Enthusiasm</option>
+                        <option value="confidence">Confidence</option>
+                        <option value="entrepreneurship">Entrepreneurship</option>
+                        <option value="teamwork">Teamwork</option>
+                        <option value="growth">Growth Mindset</option>
+                        <option value="courage">Courage</option>
+                        <option value="gratitude">Gratitude</option>
+                        <option value="discipline">Discipline</option>
+                        <option value="creativity">Creativity</option>
+                        <option value="resilience">Resilience</option>
+                        <option value="youth">Youth Leadership</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="generateQuote()">Get Quote</button>
+            </div>
+
+            <div class="output-panel">
+                <div id="quoteOutput" class="output-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Joke Generator Section -->
+    <section id="jokes" class="section-container">
+        <div class="section-header">
+            <h2>Joke Generator</h2>
+            <p>Clean, family-friendly jokes to engage your audience</p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="input-panel">
+                <button class="btn btn-primary btn-block" onclick="generateJoke()">Generate Joke</button>
+            </div>
+
+            <div class="output-panel">
+                <div id="jokeOutput" class="output-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 SpeechMaster. All rights reserved.</p>
+            <p>Helping you become a better public speaker, one speech at a time.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
